@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chính Sách Bảo Mật - Truy Xuất</title>
+  <title>Chính Sách Bảo Mật - Truy Xuất Nguồn Gốc</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -60,18 +60,26 @@
 <body>
   <div class="header">
     <h1>Chính Sách Bảo Mật</h1>
-    <p>Truy Xuất - Xác Thực Sản Phẩm</p>
+    <p>Truy Xuất Nguồn Gốc</p>
   </div>
 
   <div class="container">
-    <p class="update-date">Cập nhật lần cuối: 10 tháng 4, 2026</p>
+    <p class="update-date">Cập nhật lần cuối: 14 tháng 4, 2026 · Phiên bản 1.0.0</p>
 
     <div class="highlight">
-      <strong>Tóm tắt:</strong> Ứng dụng Truy Xuất hoạt động hoàn toàn ngoại tuyến. Chúng tôi <strong>không thu thập, lưu trữ, hoặc gửi</strong> bất kỳ dữ liệu cá nhân nào đến máy chủ bên ngoài.
+      <strong>Tóm tắt:</strong> Ứng dụng Truy Xuất Nguồn Gốc hoạt động hoàn toàn ngoại tuyến. Chúng tôi <strong>không thu thập, lưu trữ, hoặc gửi</strong> bất kỳ dữ liệu cá nhân nào đến máy chủ bên ngoài.
     </div>
 
     <h2>1. Giới thiệu</h2>
-    <p>Truy Xuất ("ứng dụng") là ứng dụng di động giúp người dùng xác thực sản phẩm bằng cách quét mã QR và mã vạch. Ứng dụng được phát triển bởi Minh Nguyen ("chúng tôi").</p>
+    <p>Truy Xuất Nguồn Gốc ("ứng dụng") là ứng dụng di động giúp người dùng xác thực và truy xuất nguồn gốc sản phẩm. Ứng dụng được phát triển bởi Minh Nguyen ("chúng tôi").</p>
+    <p>Các tính năng chính:</p>
+    <ul>
+      <li>Quét mã QR và mã vạch để xác thực sản phẩm</li>
+      <li>Xem chi tiết sản phẩm và hành trình truy xuất nguồn gốc</li>
+      <li>Cảnh báo sản phẩm có vấn đề (hết hạn, thu hồi, nghi giả mạo)</li>
+      <li>Lịch sử quét và lọc theo trạng thái</li>
+      <li>Tin tức an toàn thực phẩm (bài viết nhúng tĩnh)</li>
+    </ul>
     <p>Chính sách bảo mật này giải thích cách ứng dụng xử lý thông tin khi bạn sử dụng.</p>
 
     <h2>2. Dữ liệu chúng tôi thu thập</h2>
@@ -91,12 +99,15 @@
       <li><strong>Camera:</strong> Để quét mã QR và mã vạch trực tiếp. Hình ảnh từ camera được xử lý trên thiết bị và không được lưu trữ hoặc truyền đi.</li>
       <li><strong>Thư viện ảnh:</strong> Để chọn hình ảnh có chứa mã QR từ thư viện. Hình ảnh chỉ được đọc để giải mã, không được sao chép hoặc gửi đi.</li>
     </ul>
+    <p>Quyền truy cập Internet (INTERNET) được khai báo trong ứng dụng cho mục đích kỹ thuật của framework React Native. Ứng dụng <strong>không truyền dữ liệu người dùng</strong> qua mạng.</p>
 
     <h2>4. Lưu trữ dữ liệu cục bộ</h2>
     <p>Ứng dụng lưu trữ dữ liệu sau <strong>trên thiết bị của bạn</strong>:</p>
     <ul>
       <li><strong>Lịch sử quét:</strong> Các mã đã quét và kết quả xác thực</li>
-      <li><strong>Cài đặt:</strong> Tùy chọn ngôn ngữ và giao diện</li>
+      <li><strong>Cài đặt:</strong> Tùy chọn giao diện của bạn</li>
+      <li><strong>Dữ liệu sản phẩm:</strong> Cơ sở dữ liệu sản phẩm được nhúng sẵn trong ứng dụng</li>
+      <li><strong>Tin tức:</strong> Bài viết an toàn thực phẩm được nhúng tĩnh trong ứng dụng, không tải từ Internet</li>
     </ul>
     <p>Dữ liệu này được lưu cục bộ bằng MMKV và <strong>không bao giờ</strong> rời khỏi thiết bị của bạn. Bạn có thể xóa toàn bộ dữ liệu bất cứ lúc nào trong phần Cài đặt của ứng dụng.</p>
 
@@ -126,7 +137,7 @@
   </div>
 
   <div class="footer">
-    &copy; 2026 Truy Xuất. Tất cả quyền được bảo lưu.
+    &copy; 2026 Truy Xuất Nguồn Gốc. Tất cả quyền được bảo lưu.
   </div>
 </body>
 </html>
