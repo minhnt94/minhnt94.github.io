@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chính Sách Bảo Mật - Truy Xuất Nguồn Gốc</title>
+  <title>Chính Sách Bảo Mật - VTrace</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -60,25 +60,28 @@
 <body>
   <div class="header">
     <h1>Chính Sách Bảo Mật</h1>
-    <p>Truy Xuất Nguồn Gốc</p>
+    <p>VTrace - Truy Xuất Nguồn Gốc</p>
   </div>
 
   <div class="container">
-    <p class="update-date">Cập nhật lần cuối: 14 tháng 4, 2026 · Phiên bản 1.0.0</p>
+    <p class="update-date">Cập nhật lần cuối: 15 tháng 4, 2026 · Phiên bản 1.0.0</p>
 
     <div class="highlight">
-      <strong>Tóm tắt:</strong> Ứng dụng Truy Xuất Nguồn Gốc hoạt động hoàn toàn ngoại tuyến. Chúng tôi <strong>không thu thập, lưu trữ, hoặc gửi</strong> bất kỳ dữ liệu cá nhân nào đến máy chủ bên ngoài.
+      <strong>Tóm tắt:</strong> Ứng dụng VTrace hoạt động hoàn toàn ngoại tuyến. Chúng tôi <strong>không thu thập, lưu trữ, hoặc gửi</strong> bất kỳ dữ liệu cá nhân nào đến máy chủ bên ngoài.
     </div>
 
     <h2>1. Giới thiệu</h2>
-    <p>Truy Xuất Nguồn Gốc ("ứng dụng") là ứng dụng di động giúp người dùng xác thực và truy xuất nguồn gốc sản phẩm. Ứng dụng được phát triển bởi Minh Nguyen ("chúng tôi").</p>
+    <p>VTrace ("ứng dụng") là ứng dụng di động giúp người dùng xác thực và truy xuất nguồn gốc sản phẩm. Ứng dụng được phát triển bởi Minh Nguyen ("chúng tôi").</p>
     <p>Các tính năng chính:</p>
     <ul>
-      <li>Quét mã QR và mã vạch để xác thực sản phẩm</li>
+      <li>Quét mã QR và mã vạch (EAN-13, UPC-A, Code 128) để xác thực sản phẩm</li>
+      <li>Tải ảnh QR/mã vạch từ thư viện để quét</li>
       <li>Xem chi tiết sản phẩm và hành trình truy xuất nguồn gốc</li>
       <li>Cảnh báo sản phẩm có vấn đề (hết hạn, thu hồi, nghi giả mạo)</li>
-      <li>Lịch sử quét và lọc theo trạng thái</li>
-      <li>Tin tức an toàn thực phẩm (bài viết nhúng tĩnh)</li>
+      <li>Lịch sử quét với bộ lọc theo trạng thái</li>
+      <li>Báo cáo sản phẩm đáng ngờ</li>
+      <li>Chia sẻ kết quả xác thực</li>
+      <li>Tin tức an toàn thực phẩm</li>
     </ul>
     <p>Chính sách bảo mật này giải thích cách ứng dụng xử lý thông tin khi bạn sử dụng.</p>
 
@@ -97,7 +100,7 @@
     <p>Ứng dụng yêu cầu các quyền sau:</p>
     <ul>
       <li><strong>Camera:</strong> Để quét mã QR và mã vạch trực tiếp. Hình ảnh từ camera được xử lý trên thiết bị và không được lưu trữ hoặc truyền đi.</li>
-      <li><strong>Thư viện ảnh:</strong> Để chọn hình ảnh có chứa mã QR từ thư viện. Hình ảnh chỉ được đọc để giải mã, không được sao chép hoặc gửi đi.</li>
+      <li><strong>Thư viện ảnh:</strong> Để chọn hình ảnh có chứa mã QR/mã vạch từ thư viện. Hình ảnh chỉ được đọc để giải mã, không được sao chép hoặc gửi đi.</li>
     </ul>
     <p>Quyền truy cập Internet (INTERNET) được khai báo trong ứng dụng cho mục đích kỹ thuật của framework React Native. Ứng dụng <strong>không truyền dữ liệu người dùng</strong> qua mạng.</p>
 
@@ -105,19 +108,25 @@
     <p>Ứng dụng lưu trữ dữ liệu sau <strong>trên thiết bị của bạn</strong>:</p>
     <ul>
       <li><strong>Lịch sử quét:</strong> Các mã đã quét và kết quả xác thực</li>
-      <li><strong>Cài đặt:</strong> Tùy chọn giao diện của bạn</li>
+      <li><strong>Cài đặt:</strong> Tùy chọn ngôn ngữ và giao diện của bạn</li>
       <li><strong>Dữ liệu sản phẩm:</strong> Cơ sở dữ liệu sản phẩm được nhúng sẵn trong ứng dụng</li>
       <li><strong>Tin tức:</strong> Bài viết an toàn thực phẩm được nhúng tĩnh trong ứng dụng, không tải từ Internet</li>
     </ul>
     <p>Dữ liệu này được lưu cục bộ bằng MMKV và <strong>không bao giờ</strong> rời khỏi thiết bị của bạn. Bạn có thể xóa toàn bộ dữ liệu bất cứ lúc nào trong phần Cài đặt của ứng dụng.</p>
 
-    <h2>5. Chia sẻ dữ liệu với bên thứ ba</h2>
+    <h2>5. Tính năng chia sẻ</h2>
+    <p>Khi bạn sử dụng tính năng chia sẻ kết quả xác thực, ứng dụng sử dụng chức năng chia sẻ gốc của hệ điều hành (iOS/Android). Nội dung chia sẻ được tạo trên thiết bị của bạn và chỉ được gửi khi bạn chọn ứng dụng đích để chia sẻ.</p>
+
+    <h2>6. Tính năng báo cáo</h2>
+    <p>Khi bạn báo cáo sản phẩm đáng ngờ, ứng dụng mở ứng dụng email mặc định với nội dung được điền sẵn. Không có dữ liệu nào được gửi tự động — bạn kiểm soát hoàn toàn việc gửi email.</p>
+
+    <h2>7. Chia sẻ dữ liệu với bên thứ ba</h2>
     <p><strong>Chúng tôi không chia sẻ dữ liệu với bên thứ ba</strong> vì không có dữ liệu nào được thu thập hoặc truyền từ thiết bị của bạn.</p>
 
-    <h2>6. Bảo mật</h2>
+    <h2>8. Bảo mật</h2>
     <p>Vì tất cả dữ liệu được lưu trữ cục bộ trên thiết bị của bạn, bảo mật dữ liệu phụ thuộc vào biện pháp bảo mật thiết bị của bạn (mã PIN, vân tay, Face ID, v.v.).</p>
 
-    <h2>7. Quyền của bạn</h2>
+    <h2>9. Quyền của bạn</h2>
     <p>Bạn có toàn quyền kiểm soát dữ liệu của mình:</p>
     <ul>
       <li>Xóa lịch sử quét trong Cài đặt ứng dụng</li>
@@ -125,19 +134,19 @@
       <li>Gỡ cài đặt ứng dụng để xóa hoàn toàn tất cả dữ liệu</li>
     </ul>
 
-    <h2>8. Trẻ em</h2>
+    <h2>10. Trẻ em</h2>
     <p>Ứng dụng không nhắm đến trẻ em dưới 13 tuổi và không thu thập dữ liệu từ bất kỳ người dùng nào.</p>
 
-    <h2>9. Thay đổi chính sách</h2>
+    <h2>11. Thay đổi chính sách</h2>
     <p>Chúng tôi có thể cập nhật chính sách này theo thời gian. Mọi thay đổi sẽ được đăng trên trang này với ngày cập nhật mới.</p>
 
-    <h2>10. Liên hệ</h2>
+    <h2>12. Liên hệ</h2>
     <p>Nếu bạn có câu hỏi về chính sách bảo mật này, vui lòng liên hệ:</p>
     <p>Email: <a href="mailto:support@txng.app">support@txng.app</a></p>
   </div>
 
   <div class="footer">
-    &copy; 2026 Truy Xuất Nguồn Gốc. Tất cả quyền được bảo lưu.
+    &copy; 2026 VTrace. Tất cả quyền được bảo lưu.
   </div>
 </body>
 </html>
