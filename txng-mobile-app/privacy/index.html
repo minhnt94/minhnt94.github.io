@@ -63,7 +63,7 @@
 
   <div class="container">
     <div class="highlight">
-      <strong>Tóm tắt:</strong> VNTrace là ứng dụng offline-first. Dữ liệu sản phẩm được nhúng sẵn trong app. Internet chỉ dùng để tải hình ảnh sản phẩm. Chúng tôi không thu thập bất kỳ dữ liệu cá nhân nào.
+      <strong>Tóm tắt:</strong> VNTrace tải dữ liệu sản phẩm và tin tức từ máy chủ của chúng tôi, sau đó lưu cache trên thiết bị để bạn có thể xem lại khi không có Internet. Chúng tôi không yêu cầu đăng ký và không thu thập dữ liệu cá nhân của bạn.
     </div>
 
     <h2>1. Giới thiệu</h2>
@@ -77,44 +77,55 @@
       <li><strong>Không quảng cáo:</strong> Không có SDK quảng cáo hoặc thu thập dữ liệu cho mục đích quảng cáo.</li>
     </ul>
 
-    <h2>3. Dữ liệu lưu trữ cục bộ</h2>
+    <h2>3. Yêu cầu mạng đến máy chủ của chúng tôi</h2>
+    <p>Khi bạn quét mã, mở chi tiết sản phẩm, hoặc xem tin tức, ứng dụng sẽ gửi truy vấn đến máy chủ của chúng tôi để lấy dữ liệu mới nhất. Các truy vấn này:</p>
+    <ul>
+      <li><strong>Không chứa thông tin cá nhân</strong> (không có ID người dùng, không có tài khoản, không có vị trí GPS).</li>
+      <li>Đi qua hạ tầng <strong>Cloudflare Workers</strong>, là nhà cung cấp hạ tầng (sub-processor) của chúng tôi. Cloudflare có thể ghi lại siêu dữ liệu kỹ thuật chuẩn của mỗi truy vấn (địa chỉ IP, user-agent, thời điểm truy cập) phục vụ mục đích phòng chống lạm dụng và vận hành dịch vụ. Chính sách bảo mật của Cloudflare áp dụng cho dữ liệu này.</li>
+      <li>Không được chúng tôi sử dụng cho phân tích hành vi, hồ sơ người dùng, hoặc bất kỳ mục đích thương mại nào.</li>
+    </ul>
+
+    <h2>4. Dữ liệu lưu trữ cục bộ</h2>
     <p>Ứng dụng lưu trữ một số dữ liệu trên thiết bị của bạn để cung cấp chức năng:</p>
     <ul>
       <li><strong>Lịch sử quét:</strong> Danh sách các mã QR/barcode bạn đã quét.</li>
       <li><strong>Cài đặt ứng dụng:</strong> Tùy chọn ngôn ngữ và thông báo.</li>
+      <li><strong>Cache dữ liệu sản phẩm và tin tức:</strong> Bản sao các nội dung tải về từ máy chủ, có thời hạn ngắn (khoảng 1 giờ), giúp ứng dụng phản hồi nhanh hơn và hoạt động được khi không có Internet.</li>
     </ul>
-    <p>Dữ liệu này được lưu cục bộ bằng MMKV và <strong>không bao giờ rời khỏi thiết bị của bạn</strong>.</p>
+    <p>Toàn bộ dữ liệu trên được lưu cục bộ và <strong>không bao giờ được gửi ngược lại máy chủ của chúng tôi hay bất kỳ bên thứ ba nào</strong>.</p>
 
-    <h2>4. Quyền truy cập Camera</h2>
+    <h2>5. Quyền truy cập Camera</h2>
     <p>VNTrace yêu cầu quyền truy cập camera để quét mã QR và barcode. Hình ảnh từ camera được xử lý trên thiết bị và không được lưu trữ hoặc truyền đi bất cứ đâu.</p>
 
-    <h2>5. Quyền truy cập Thư viện ảnh</h2>
+    <h2>6. Quyền truy cập Thư viện ảnh</h2>
     <p>Bạn có thể tải ảnh từ thư viện để quét mã QR/barcode. Ảnh được xử lý cục bộ và không được gửi đến máy chủ nào.</p>
 
-    <h2>6. Chia sẻ dữ liệu</h2>
-    <p>Chúng tôi <strong>không chia sẻ</strong> bất kỳ dữ liệu nào với bên thứ ba vì đơn giản là chúng tôi không thu thập dữ liệu.</p>
+    <h2>7. Chia sẻ dữ liệu</h2>
+    <p>Chúng tôi <strong>không chia sẻ dữ liệu với bên thứ ba</strong> cho mục đích quảng cáo, phân tích hành vi, hoặc bất kỳ mục đích thương mại nào.</p>
+    <p>Như đã nêu ở Mục 3, hạ tầng máy chủ của chúng tôi vận hành trên Cloudflare Workers. Cloudflare đóng vai trò là nhà xử lý phụ (sub-processor) và chỉ xử lý siêu dữ liệu yêu cầu mạng theo các tiêu chuẩn vận hành của họ. Đây không phải là chia sẻ dữ liệu cá nhân vì các yêu cầu của ứng dụng không kèm thông tin định danh người dùng.</p>
 
-    <h2>7. Bảo mật dữ liệu</h2>
-    <p>Tất cả dữ liệu được lưu trữ cục bộ trên thiết bị của bạn và được bảo vệ bởi các biện pháp bảo mật của hệ điều hành (iOS/Android).</p>
+    <h2>8. Bảo mật dữ liệu</h2>
+    <p>Tất cả dữ liệu cục bộ được lưu trên thiết bị của bạn và được bảo vệ bởi các biện pháp bảo mật của hệ điều hành (iOS/Android). Mọi truy vấn đến máy chủ của chúng tôi đều dùng kết nối HTTPS được mã hóa.</p>
 
-    <h2>8. Quyền của bạn</h2>
+    <h2>9. Quyền của bạn</h2>
     <p>Bạn có toàn quyền kiểm soát dữ liệu của mình:</p>
     <ul>
-      <li><strong>Xóa lịch sử:</strong> Vào Cài đặt > Xóa lịch sử quét.</li>
-      <li><strong>Gỡ ứng dụng:</strong> Xóa ứng dụng sẽ xóa tất cả dữ liệu liên quan.</li>
+      <li><strong>Xóa lịch sử:</strong> Vào Cài đặt &gt; Xóa lịch sử quét.</li>
+      <li><strong>Xóa cache:</strong> Gỡ và cài lại ứng dụng sẽ xóa toàn bộ cache cục bộ.</li>
+      <li><strong>Gỡ ứng dụng:</strong> Xóa ứng dụng sẽ xóa tất cả dữ liệu liên quan trên thiết bị.</li>
     </ul>
 
-    <h2>9. Thay đổi chính sách</h2>
+    <h2>10. Thay đổi chính sách</h2>
     <p>Nếu có thay đổi về chính sách bảo mật, chúng tôi sẽ cập nhật trang này và thông báo trong ứng dụng (nếu cần thiết).</p>
 
-    <h2>10. Liên hệ</h2>
+    <h2>11. Liên hệ</h2>
     <p>Nếu bạn có câu hỏi về chính sách bảo mật này, vui lòng liên hệ:</p>
     <ul>
       <li>Email: <a href="mailto:minhnt94@gmail.com">minhnt94@gmail.com</a></li>
     </ul>
 
     <div class="highlight">
-      <strong>Cập nhật lần cuối:</strong> 15 tháng 4, 2026 (v1.0.0)
+      <strong>Cập nhật lần cuối:</strong> 4 tháng 5, 2026 (v1.1.0)
     </div>
   </div>
 
