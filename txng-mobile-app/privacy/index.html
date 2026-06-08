@@ -85,69 +85,94 @@
 
   <div class="container">
     <div class="highlight">
-      <strong>Tóm tắt:</strong> VNTrace tải dữ liệu sản phẩm và tin tức từ máy chủ của chúng tôi, sau đó lưu cache trên thiết bị để bạn có thể xem lại khi không có Internet. Chúng tôi không yêu cầu đăng ký và không thu thập dữ liệu cá nhân của bạn.
+      <strong>Tóm tắt:</strong> Bạn có thể quét mã và tra cứu sản phẩm mà <strong>không cần tài khoản</strong>. Một số tính năng (lưu hoạt động, gửi phản ánh, và toàn bộ khu vực dành cho doanh nghiệp) yêu cầu đăng nhập bằng <strong>email và mã OTP</strong>. Khi đó chúng tôi thu thập địa chỉ email của bạn để gửi mã đăng nhập và nhận diện tài khoản. Chúng tôi không chạy quảng cáo, không theo dõi hành vi, và không bán dữ liệu của bạn.
     </div>
 
     <h2>1. Giới thiệu</h2>
     <p>Chính sách bảo mật này giải thích cách ứng dụng VNTrace ("Ứng dụng") xử lý thông tin khi bạn sử dụng dịch vụ của chúng tôi.</p>
 
     <h2>2. Dữ liệu chúng tôi thu thập</h2>
-    <p>VNTrace được thiết kế với quyền riêng tư là ưu tiên hàng đầu:</p>
+    <p>Phạm vi dữ liệu phụ thuộc vào cách bạn dùng ứng dụng:</p>
     <ul>
-      <li><strong>Không thu thập dữ liệu cá nhân:</strong> Chúng tôi không yêu cầu đăng ký, đăng nhập, hoặc bất kỳ thông tin cá nhân nào.</li>
-      <li><strong>Không theo dõi:</strong> Không có analytics, tracking, hoặc cookies.</li>
+      <li><strong>Khi quét và tra cứu (không cần tài khoản):</strong> Chúng tôi không yêu cầu thông tin cá nhân. Bạn có thể quét mã, xem chi tiết sản phẩm và đọc tin tức mà không cần đăng nhập.</li>
+      <li><strong>Khi đăng nhập:</strong> Chúng tôi thu thập <strong>địa chỉ email</strong> của bạn để gửi mã đăng nhập một lần (OTP) và để nhận diện tài khoản người dân hoặc tài khoản doanh nghiệp.</li>
+      <li><strong>Đối với tài khoản doanh nghiệp:</strong> Chúng tôi lưu trữ nội dung mà bạn chủ động tạo trong khu vực doanh nghiệp (xem Mục 5).</li>
+      <li><strong>Không theo dõi:</strong> Không có analytics, không tracking hành vi, không cookies quảng cáo.</li>
       <li><strong>Không quảng cáo:</strong> Không có SDK quảng cáo hoặc thu thập dữ liệu cho mục đích quảng cáo.</li>
     </ul>
 
-    <h2>3. Yêu cầu mạng đến máy chủ của chúng tôi</h2>
-    <p>Khi bạn quét mã, mở chi tiết sản phẩm, hoặc xem tin tức, ứng dụng sẽ gửi truy vấn đến máy chủ của chúng tôi để lấy dữ liệu mới nhất. Các truy vấn này:</p>
+    <h2>3. Tài khoản và đăng nhập (Email + OTP)</h2>
+    <p>VNTrace có hai loại tài khoản: <strong>người dân</strong> và <strong>doanh nghiệp</strong>. Việc đăng nhập là tùy chọn cho người dân (chỉ cần thiết cho một số tính năng như lưu hoạt động và gửi phản ánh) và bắt buộc đối với khu vực doanh nghiệp.</p>
     <ul>
-      <li><strong>Không chứa thông tin cá nhân</strong> (không có ID người dùng, không có tài khoản, không có vị trí GPS).</li>
-      <li>Đi qua hạ tầng <strong>Cloudflare Workers</strong>, là nhà cung cấp hạ tầng (sub-processor) của chúng tôi. Cloudflare có thể ghi lại siêu dữ liệu kỹ thuật chuẩn của mỗi truy vấn (địa chỉ IP, user-agent, thời điểm truy cập) phục vụ mục đích phòng chống lạm dụng và vận hành dịch vụ. Chính sách bảo mật của Cloudflare áp dụng cho dữ liệu này.</li>
-      <li>Không được chúng tôi sử dụng cho phân tích hành vi, hồ sơ người dùng, hoặc bất kỳ mục đích thương mại nào.</li>
+      <li>Bạn nhập địa chỉ email, chúng tôi gửi một <strong>mã OTP</strong> đến email đó, và bạn nhập mã để hoàn tất đăng nhập.</li>
+      <li>Chúng tôi <strong>không sử dụng mật khẩu</strong>; xác thực hoàn toàn dựa trên email và mã OTP.</li>
+      <li>Sau khi đăng nhập, một <strong>mã phiên (session token)</strong> được lưu an toàn trên thiết bị để giữ bạn ở trạng thái đăng nhập. Bạn có thể đăng xuất bất cứ lúc nào trong phần Cài đặt.</li>
     </ul>
 
-    <h2>4. Dữ liệu lưu trữ cục bộ</h2>
+    <h2>4. Gửi mã đăng nhập qua email</h2>
+    <p>Để gửi mã OTP, địa chỉ email của bạn được chuyển đến <strong>Brevo</strong> (nhà cung cấp dịch vụ gửi email, đóng vai trò nhà xử lý phụ — sub-processor). Brevo chỉ xử lý email của bạn nhằm mục đích gửi mã đăng nhập. Chúng tôi không dùng email của bạn để gửi thư quảng cáo. Chính sách bảo mật của Brevo áp dụng cho hoạt động xử lý này.</p>
+
+    <h2>5. Dữ liệu do tài khoản doanh nghiệp tạo ra</h2>
+    <p>Nếu bạn sử dụng khu vực doanh nghiệp, các nội dung bạn chủ động tạo và quản lý — chẳng hạn lô hàng, mã định danh sản phẩm (UID), địa điểm, và thông báo thu hồi — được gửi đến và lưu trữ trên máy chủ của chúng tôi để cung cấp dịch vụ truy xuất nguồn gốc. Dữ liệu này gắn với tài khoản doanh nghiệp của bạn và chỉ được dùng để vận hành tính năng truy xuất nguồn gốc, không dùng cho quảng cáo hay bán cho bên thứ ba.</p>
+
+    <h2>6. Yêu cầu mạng đến máy chủ của chúng tôi</h2>
+    <p>Khi bạn quét mã, mở chi tiết sản phẩm, xem tin tức, đăng nhập, hoặc dùng tính năng doanh nghiệp, ứng dụng sẽ gửi truy vấn đến máy chủ của chúng tôi. Các truy vấn này:</p>
+    <ul>
+      <li>Đi qua hạ tầng <strong>Cloudflare Workers</strong>, là nhà cung cấp hạ tầng (sub-processor) của chúng tôi. Cloudflare có thể ghi lại siêu dữ liệu kỹ thuật chuẩn của mỗi truy vấn (địa chỉ IP, user-agent, thời điểm truy cập) phục vụ mục đích phòng chống lạm dụng và vận hành dịch vụ. Chính sách bảo mật của Cloudflare áp dụng cho dữ liệu này.</li>
+      <li>Đối với hành động tra cứu/đọc tin tức, truy vấn <strong>không kèm thông tin định danh cá nhân</strong>. Đối với hành động liên quan đến tài khoản (đăng nhập, dữ liệu doanh nghiệp), truy vấn kèm theo email và/hoặc mã phiên để xác thực.</li>
+      <li>Không được dùng cho phân tích hành vi, hồ sơ người dùng, hoặc bất kỳ mục đích thương mại nào.</li>
+    </ul>
+
+    <h2>7. Dữ liệu lưu trữ cục bộ</h2>
     <p>Ứng dụng lưu trữ một số dữ liệu trên thiết bị của bạn để cung cấp chức năng:</p>
     <ul>
+      <li><strong>Mã phiên đăng nhập:</strong> Lưu an toàn trên thiết bị để giữ bạn ở trạng thái đăng nhập; bị xóa khi bạn đăng xuất.</li>
       <li><strong>Lịch sử quét:</strong> Danh sách các mã QR/barcode bạn đã quét.</li>
       <li><strong>Cài đặt ứng dụng:</strong> Tùy chọn ngôn ngữ và thông báo.</li>
       <li><strong>Cache dữ liệu sản phẩm và tin tức:</strong> Bản sao các nội dung tải về từ máy chủ, có thời hạn ngắn (khoảng 1 giờ), giúp ứng dụng phản hồi nhanh hơn và hoạt động được khi không có Internet.</li>
     </ul>
-    <p>Toàn bộ dữ liệu trên được lưu cục bộ và <strong>không bao giờ được gửi ngược lại máy chủ của chúng tôi hay bất kỳ bên thứ ba nào</strong>.</p>
+    <p>Lịch sử quét, cài đặt và cache được lưu cục bộ và không được gửi ngược lại máy chủ. Mã phiên chỉ được gửi đến máy chủ của chúng tôi để xác thực các yêu cầu liên quan đến tài khoản.</p>
 
-    <h2>5. Quyền truy cập Camera</h2>
+    <h2>8. Quyền truy cập Camera</h2>
     <p>VNTrace yêu cầu quyền truy cập camera để quét mã QR và barcode. Hình ảnh từ camera được xử lý trên thiết bị và không được lưu trữ hoặc truyền đi bất cứ đâu.</p>
 
-    <h2>6. Quyền truy cập Thư viện ảnh</h2>
+    <h2>9. Quyền truy cập Thư viện ảnh</h2>
     <p>Bạn có thể tải ảnh từ thư viện để quét mã QR/barcode. Ảnh được xử lý cục bộ và không được gửi đến máy chủ nào.</p>
 
-    <h2>7. Chia sẻ dữ liệu</h2>
-    <p>Chúng tôi <strong>không chia sẻ dữ liệu với bên thứ ba</strong> cho mục đích quảng cáo, phân tích hành vi, hoặc bất kỳ mục đích thương mại nào.</p>
-    <p>Như đã nêu ở Mục 3, hạ tầng máy chủ của chúng tôi vận hành trên Cloudflare Workers. Cloudflare đóng vai trò là nhà xử lý phụ (sub-processor) và chỉ xử lý siêu dữ liệu yêu cầu mạng theo các tiêu chuẩn vận hành của họ. Đây không phải là chia sẻ dữ liệu cá nhân vì các yêu cầu của ứng dụng không kèm thông tin định danh người dùng.</p>
+    <h2>10. Chia sẻ dữ liệu</h2>
+    <p>Chúng tôi <strong>không bán dữ liệu</strong> và không chia sẻ dữ liệu với bên thứ ba cho mục đích quảng cáo hoặc phân tích hành vi. Chúng tôi chỉ chia sẻ dữ liệu với các nhà xử lý phụ (sub-processor) cần thiết để vận hành dịch vụ:</p>
+    <ul>
+      <li><strong>Cloudflare</strong> — hạ tầng máy chủ và xử lý siêu dữ liệu yêu cầu mạng (xem Mục 6).</li>
+      <li><strong>Brevo</strong> — gửi email chứa mã đăng nhập OTP (xem Mục 4).</li>
+    </ul>
 
-    <h2>8. Bảo mật dữ liệu</h2>
-    <p>Tất cả dữ liệu cục bộ được lưu trên thiết bị của bạn và được bảo vệ bởi các biện pháp bảo mật của hệ điều hành (iOS/Android). Mọi truy vấn đến máy chủ của chúng tôi đều dùng kết nối HTTPS được mã hóa.</p>
+    <h2>11. Bảo mật dữ liệu</h2>
+    <p>Dữ liệu cục bộ được lưu trên thiết bị của bạn và được bảo vệ bởi các biện pháp bảo mật của hệ điều hành (iOS/Android). Mã phiên được lưu trong vùng lưu trữ an toàn của thiết bị. Mọi truy vấn đến máy chủ của chúng tôi đều dùng kết nối HTTPS được mã hóa.</p>
 
-    <h2>9. Quyền của bạn</h2>
+    <h2>12. Quyền của bạn</h2>
     <p>Bạn có toàn quyền kiểm soát dữ liệu của mình:</p>
     <ul>
+      <li><strong>Đăng xuất:</strong> Vào Cài đặt &gt; Đăng xuất để xóa mã phiên khỏi thiết bị.</li>
       <li><strong>Xóa lịch sử:</strong> Vào Cài đặt &gt; Xóa lịch sử quét.</li>
       <li><strong>Xóa cache:</strong> Gỡ và cài lại ứng dụng sẽ xóa toàn bộ cache cục bộ.</li>
+      <li><strong>Xóa tài khoản và dữ liệu:</strong> Để yêu cầu xóa tài khoản cùng dữ liệu liên quan (email và nội dung doanh nghiệp) khỏi máy chủ của chúng tôi, vui lòng liên hệ <a href="mailto:minhnt94@gmail.com">minhnt94@gmail.com</a>. Chúng tôi sẽ xử lý yêu cầu trong thời gian hợp lý.</li>
       <li><strong>Gỡ ứng dụng:</strong> Xóa ứng dụng sẽ xóa tất cả dữ liệu liên quan trên thiết bị.</li>
     </ul>
 
-    <h2>10. Thay đổi chính sách</h2>
+    <h2>13. Quyền riêng tư của trẻ em</h2>
+    <p>VNTrace không hướng đến trẻ em và không cố ý thu thập dữ liệu cá nhân của trẻ em.</p>
+
+    <h2>14. Thay đổi chính sách</h2>
     <p>Nếu có thay đổi về chính sách bảo mật, chúng tôi sẽ cập nhật trang này và thông báo trong ứng dụng (nếu cần thiết).</p>
 
-    <h2>11. Liên hệ</h2>
+    <h2>15. Liên hệ</h2>
     <p>Nếu bạn có câu hỏi về chính sách bảo mật này, vui lòng liên hệ:</p>
     <ul>
       <li>Email: <a href="mailto:minhnt94@gmail.com">minhnt94@gmail.com</a></li>
     </ul>
 
     <div class="highlight">
-      <strong>Cập nhật lần cuối:</strong> 5 tháng 5, 2026 (v1.2.1)
+      <strong>Cập nhật lần cuối:</strong> 8 tháng 6, 2026 (v1.3.0)
     </div>
   </div>
 
